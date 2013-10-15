@@ -33,7 +33,9 @@ describe OrangeTree do
 
   it 'should start producing fruits after 3 years and count them' do
     subject.fruits.should be 0
-    expect { 3.times { subject.one_year_passes } }.to change(subject, :fruits).by_at_least 1
+    expect { subject.one_year_passes }.not_to change(subject, :fruits)
+    expect { subject.one_year_passes }.not_to change(subject, :fruits)
+    expect { subject.one_year_passes }.to change(subject, :fruits).by 9
     subject.count_the_oranges.should be 9
   end
 
