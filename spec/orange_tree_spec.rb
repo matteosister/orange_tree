@@ -51,4 +51,10 @@ describe OrangeTree do
     7.times { subject.pick_an_orange }
     subject.pick_an_orange.should be_eql 'No more juice! :('
   end
+
+  it 'should not give fruits when it\'s dead' do
+    10.times { subject.one_year_passes }
+    subject.alive?.should be_false
+    subject.pick_an_orange.should be_eql 'No more juice! :('
+  end
 end

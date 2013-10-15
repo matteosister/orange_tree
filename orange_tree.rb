@@ -39,7 +39,7 @@ class OrangeTree
   end
 
   def pick_an_orange
-    if @fruits > 0
+    if @fruits > 0 and alive?
       @fruits -= 1
       'here is a juicy orange!'
     else
