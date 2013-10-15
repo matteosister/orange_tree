@@ -16,9 +16,7 @@
 # you don't pick one year fall off before the next year.
 
 class OrangeTree
-  attr_reader :age
-  attr_reader :height
-  attr_reader :fruits
+  attr_reader :age, :height, :fruits
 
   def initialize
     @age = 0
@@ -33,9 +31,7 @@ class OrangeTree
   def one_year_passes
     @age += 1
     @height += 2
-    if @age >= 3
-      @fruits = @age ** 2
-    end
+    @fruits = @age ** 2 if @age >= 3
   end
 
   def count_the_oranges

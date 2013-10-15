@@ -6,17 +6,16 @@ describe OrangeTree do
   subject { described_class.new }
 
   it 'should respond to the required methods' do
-    subject.should respond_to :height
     subject.should respond_to :one_year_passes
     subject.should respond_to :count_the_oranges
     subject.should respond_to :pick_an_orange
+    subject.should respond_to :height
     subject.should respond_to :age
     subject.should respond_to :fruits
-    subject.age.should be 0
-    subject.fruits.should be 0
   end
 
   it 'should increase age when one_year_passes is called' do
+    subject.age.should be 0
     expect { subject.one_year_passes }.to change(subject, :age).by 1
     expect { 5.times { subject.one_year_passes } }.to change(subject, :age).by 5
   end
@@ -33,8 +32,16 @@ describe OrangeTree do
   end
 
   it 'should start producing fruits after 3 years and count them' do
+    subject.fruits.should be 0
     expect { 3.times { subject.one_year_passes } }.to change(subject, :fruits).by_at_least 1
     subject.count_the_oranges.should be 9
+  end
+
+  it 'should produce more fruit every year' do
+    3.times { subject.one_year_passes }
+    subject.count_the_oranges.should be 9
+    subject.one_year_passes
+    subject.count_the_oranges.should be 16
   end
 
   it 'should be able to give us juicy oranges' do
