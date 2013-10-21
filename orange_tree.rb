@@ -16,7 +16,8 @@
 # you don't pick one year fall off before the next year.
 
 class OrangeTree
-  attr_reader :age, :height, :fruits
+  @@max_age = 10
+  attr_reader :age, :height
 
   def initialize
     @age = 0
@@ -25,10 +26,11 @@ class OrangeTree
   end
 
   def alive?
-    @age < 10
+    @age < @@max_age
   end
 
   def one_year_passes
+    return unless alive?
     @age += 1
     @height += 2
     @fruits = @age ** 2 if @age >= 3
@@ -46,4 +48,7 @@ class OrangeTree
       'No more juice! :('
     end
   end
+
+  private
+  attr_reader :fruits
 end

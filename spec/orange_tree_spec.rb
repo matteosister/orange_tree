@@ -11,7 +11,7 @@ describe OrangeTree do
     subject.should respond_to :pick_an_orange
     subject.should respond_to :height
     subject.should respond_to :age
-    subject.should respond_to :fruits
+    subject.should_not respond_to :fruits
   end
 
   it 'should increase age when one_year_passes is called' do
@@ -32,7 +32,7 @@ describe OrangeTree do
   end
 
   it 'should start producing fruits after 3 years and count them' do
-    subject.fruits.should be 0
+    subject.count_the_oranges.should be 0
     expect { subject.one_year_passes }.not_to change(subject, :fruits)
     expect { subject.one_year_passes }.not_to change(subject, :fruits)
     expect { subject.one_year_passes }.to change(subject, :fruits).by 9
